@@ -100,6 +100,10 @@ else
   say "skipped pi wiring (--no-pi)"
 fi
 
+# 4. Advisory: check the optional browser-QA dependency (agent-browser). Never fatal.
+echo "checking optional browser-QA deps (agent-browser)…"
+bash "$REPO/scripts/doctor.sh" || say "qa/bench need agent-browser — see the hints above (install is optional)"
+
 echo "ascension: done."
 echo "  Restart your agent sessions so the new skills and commands load."
 exit 0

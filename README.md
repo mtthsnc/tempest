@@ -65,6 +65,24 @@ Each ships as a deliberately generic **starter** skill — a faithful gstack-sty
 with your own standards. In Claude Code, type `/plan <task>` or let the agent auto-invoke the skill.
 In pi, type `/plan <task>` or `/skill:plan <task>`.
 
+### Quality & QA (browser-driven)
+
+| Workflow | Skill | Command | What it does |
+|---|---|---|---|
+| Browser UI acceptance / E2E / smoke | `qa` | `/qa <flow/URL>` | Drives the real UI, asserts, captures screenshot evidence |
+| Run-and-observe verification | `verify` | `/verify <change>` | Runs the app and confirms real behavior (hands UI off to `qa`) |
+| Performance / Core Web Vitals | `bench` | `/bench <URL>` | Measures LCP/CLS/INP vs a budget or baseline |
+
+`qa` and `bench` are powered by **[agent-browser](https://github.com/vercel-labs/agent-browser)** — a
+browser-automation CLI. The skills are **harness-adaptive over the same command vocabulary**: on pi
+they use the native `agent_browser` tool ([pi-agent-browser-native](https://github.com/fitchmultz/pi-agent-browser-native)),
+and on Claude Code they drive the `agent-browser` CLI directly via the shell.
+
+**Dependency:** install the `agent-browser` CLI and keep it on PATH (see its
+[install docs](https://github.com/vercel-labs/agent-browser)); on pi also run
+`pi install npm:pi-agent-browser-native`. Then `./scripts/doctor.sh` verifies the setup (it's also
+run, non-fatally, at the end of `./install.sh`).
+
 ## Develop
 
 The skills are the product; everything else is thin wiring. See [AGENTS.md](AGENTS.md) for the

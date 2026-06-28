@@ -15,6 +15,12 @@ All notable changes to ascension are documented here. Format loosely follows
 - The sprint-loop spine as starter skills + commands, all passing the conformance gate:
   `office-hours` (reframe an idea), `plan` (reviewed plan), `build` (execute an increment),
   `review` (staff-level diff audit), `ship` (land a reviewed change).
+- Browser-driven QA suite over [agent-browser](https://github.com/vercel-labs/agent-browser),
+  harness-adaptive (pi's native `agent_browser` tool vs the `agent-browser` CLI on Claude Code):
+  `qa` (UI acceptance/E2E with screenshot + assertion evidence), `verify` (run-and-observe),
+  `bench` (Core Web Vitals / perf vs budget).
+- `scripts/doctor.sh`: advisory, read-only check for the `agent-browser` CLI + pi wrapper; run
+  non-fatally at the end of `install.sh`.
 
 ### Planned
 - `reflect` handoff to the separate reflect project; `autoplan` chaining; `cso`/`investigate` gates.

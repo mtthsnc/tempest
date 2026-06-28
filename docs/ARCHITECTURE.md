@@ -65,6 +65,23 @@ No file is duplicated between the two distribution shapes; they reference the sa
 - **command portability** — a `description` is present and only the shared arg subset is used;
 - **no hardcoded home/user paths** in tracked files.
 
+## Browser QA: one tool, two invocation paths
+
+The `qa` and `bench` skills depend on [agent-browser](https://github.com/vercel-labs/agent-browser),
+a standalone browser-automation CLI. The portability trick is the same as for skills: both harnesses
+speak the **same agent-browser command vocabulary** (`open` → `snapshot -i` → `click @eN` → `assert`
+→ `screenshot`; `vitals <url>` for perf), just invoked differently.
+
+- **pi** uses the native `agent_browser` tool from the `pi-agent-browser-native` extension (input
+  modes `args`/`job`/`qa`/`semanticAction`, plus `agent_browser_web_search`).
+- **Claude Code** (or any harness without that tool) drives the `agent-browser` CLI directly via the
+  shell.
+
+So the skill body teaches the workflow once and says "prefer the native tool if present, else the
+CLI." `agent-browser` is an **external dependency** (not bundled) and must be on PATH; on pi the
+wrapper extension is also needed. `scripts/doctor.sh` is a read-only check for both, run non-fatally
+by `install.sh`; it never installs or mutates settings.
+
 ## Why future harnesses are nearly free
 
 OpenAI Codex and opencode also read `AGENTS.md` and consume the Agent Skills `SKILL.md` standard.
