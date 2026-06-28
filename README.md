@@ -1,15 +1,14 @@
-# tempest
+# Tempest
 
 A **software factory** for AI coding agents — opinionated build workflows shipped as portable
 [Agent Skills](https://agentskills.io) that run **identically on [Claude Code](https://claude.com/claude-code)
 and [pi](https://pi.dev)**.
 
-Inspired by [gstack](https://github.com/garrytan/gstack): a sprint loop —
-**plan → build → review → test → ship → reflect** — encoded as skills your agent loads on demand.
-One source tree, two harnesses, no per-tool forks.
+A sprint loop — **office-hours → plan → build → review → ship**, plus browser-driven QA — encoded as
+skills your agent loads on demand. One source tree, two harnesses, no per-tool forks.
 
-> Status: **v0.1 — early.** The `plan` workflow is implemented end-to-end; the rest of the spine is
-> on the roadmap. The conformance gate is green.
+> Status: **v0.1.** The full sprint-loop spine, the QA suite (`qa`/`verify`/`bench`), and the `bcp`
+> brand bridge are implemented; the conformance gate and tests are green.
 
 ## Why it's portable
 
@@ -61,8 +60,8 @@ separate [reflect](https://github.com/mtthsnc/reflect) project):
 | Staff-level diff review (optional auto-fix) | `review` | `/review <diff/PR>` | ✅ implemented |
 | Land a reviewed change (PR, CI, deploy) | `ship` | `/ship <what>` | ✅ implemented |
 
-Each ships as a deliberately generic **starter** skill — a faithful gstack-style spine you customize
-with your own standards. In Claude Code, type `/plan <task>` or let the agent auto-invoke the skill.
+Each ships as a deliberately generic **starter** skill — a spine you customize with your own
+standards. In Claude Code, type `/plan <task>` or let the agent auto-invoke the skill.
 In pi, type `/plan <task>` or `/skill:plan <task>`.
 
 ### Quality & QA (browser-driven)

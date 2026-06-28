@@ -39,7 +39,7 @@ plugins/tempest/
 package.json                           pi package manifest (pi.skills / pi.prompts)
 AGENTS.md  CLAUDE.md -> AGENTS.md       instructions (Claude reads CLAUDE.md; pi reads either)
 install.sh  uninstall.sh               idempotent wiring into ~/.agents, ~/.claude, ~/.pi
-scripts/validate.sh                    conformance gate (the "Brand Check")
+scripts/validate.sh                    conformance gate
 tests/run.sh                           sandbox install + manifest/skill assertions
 docs/ARCHITECTURE.md                   the cross-harness design
 ```
