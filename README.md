@@ -83,6 +83,17 @@ and on Claude Code they drive the `agent-browser` CLI directly via the shell.
 `pi install npm:pi-agent-browser-native`. Then `./scripts/doctor.sh` verifies the setup (it's also
 run, non-fatally, at the end of `./install.sh`).
 
+### Brand (BCP)
+
+| Workflow | Skill | Command | What it does |
+|---|---|---|---|
+| Brand Context Protocol | `bcp` | `/bcp [scaffold \| <task>]` | Scaffold/operate a brand: capture truth, produce on-brand output, score it |
+
+`bcp` bridges the dev stack to **[BCP](https://github.com/mtthsnc/bcp)** — a git-native Brand Context
+Protocol where a brand is cited, dated truth that humans and agents build from. The skill scaffolds
+the BCP template into a project and routes to its own skills (`brand-truth`, `landing-page`,
+`brand-check`); the brand lives in its own owned repo, not locked inside this tooling.
+
 ## Develop
 
 The skills are the product; everything else is thin wiring. See [AGENTS.md](AGENTS.md) for the

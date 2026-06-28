@@ -21,6 +21,9 @@ All notable changes to ascension are documented here. Format loosely follows
   `bench` (Core Web Vitals / perf vs budget).
 - `scripts/doctor.sh`: advisory, read-only check for the `agent-browser` CLI + pi wrapper; run
   non-fatally at the end of `install.sh`.
+- `bcp` skill + `/bcp` command: bridges the stack to the Brand Context Protocol template at
+  github.com/mtthsnc/bcp — scaffold a brand repo and route to its `brand-truth`/`landing-page`/
+  `brand-check` skills, keeping the brand in its own owned repo.
 
 ### Planned
 - `reflect` handoff to the separate reflect project; `autoplan` chaining; `cso`/`investigate` gates.
