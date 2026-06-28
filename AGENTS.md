@@ -1,12 +1,12 @@
 # AGENTS.md
 
-Guidance for coding agents (and humans) working **on** the ascension repo. For what it does and how
+Guidance for coding agents (and humans) working **on** the tempest repo. For what it does and how
 to install it, see [README.md](README.md); for the cross-harness design, see
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## What this repo is
 
-ascension is a **software factory**: a set of opinionated build workflows — plan → build → review →
+tempest is a **software factory**: a set of opinionated build workflows — plan → build → review →
 test → ship → reflect — shipped as **portable Agent Skills** that run identically on **Claude Code**
 and **pi**. The skills are the product; the manifests and installer are thin wiring around one shared
 source tree. It contains **no personal data**.
@@ -14,7 +14,7 @@ source tree. It contains **no personal data**.
 ## Golden rules
 
 1. **One source, two harnesses.** Every skill is authored once under
-   `plugins/ascension/skills/<name>/SKILL.md` following the [Agent Skills standard](https://agentskills.io).
+   `plugins/tempest/skills/<name>/SKILL.md` following the [Agent Skills standard](https://agentskills.io).
    Never fork a skill per harness. If a harness needs something different, express it in the install
    wiring, not in duplicated content.
 2. **The conformance gate is law.** `./scripts/validate.sh` must pass before any commit;
@@ -32,7 +32,7 @@ source tree. It contains **no personal data**.
 
 ```
 .claude-plugin/marketplace.json        Claude marketplace index (lists the plugin)
-plugins/ascension/
+plugins/tempest/
   .claude-plugin/plugin.json           Claude plugin manifest
   skills/<name>/SKILL.md               THE skills (Agent Skills standard) — author once
   commands/<verb>.md                   thin slash entry points (also pi prompt templates)
@@ -46,7 +46,7 @@ docs/ARCHITECTURE.md                   the cross-harness design
 
 ## Working here
 
-- **Add/edit a skill:** create `plugins/ascension/skills/<name>/SKILL.md` with frontmatter `name`
+- **Add/edit a skill:** create `plugins/tempest/skills/<name>/SKILL.md` with frontmatter `name`
   (== the directory name, lowercase letters/numbers/hyphens, ≤ 64) + `description` ("Use when…",
   ≤ 1024 chars). Structure the body as Overview → Procedure → Common mistakes → Guardrails. Add a thin
   `commands/<name>.md` if you want an explicit `/<name>` entry point. Run `./scripts/validate.sh`.

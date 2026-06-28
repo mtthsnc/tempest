@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ascension conformance gate — the "Brand Check". Runs locally, in pre-commit, and in CI.
+# tempest conformance gate — the "Brand Check". Runs locally, in pre-commit, and in CI.
 # Hard gates: shell syntax, JSON validity, skill frontmatter contract, command portability,
 # manifest path integrity, no hardcoded home paths.
 # Advisory (run only if installed): shellcheck.
@@ -7,7 +7,7 @@
 set -uo pipefail
 cd "$(dirname "$(readlink -f "$0")")/.." || exit 2
 
-PLUGIN="plugins/ascension"
+PLUGIN="plugins/tempest"
 
 fail=0
 ok()   { printf '  \033[32m✓\033[0m %s\n' "$*"; }
@@ -41,7 +41,7 @@ echo "== manifest path integrity =="
 if python3 - <<'PY'; then ok "manifest paths resolve"; else bad "manifest path integrity failed"; fi
 import json, os, sys
 bad = 0
-plugin_dir = "plugins/ascension"
+plugin_dir = "plugins/tempest"
 
 # plugin.json: skills / commands dirs must exist
 pj = json.load(open(f"{plugin_dir}/.claude-plugin/plugin.json"))
@@ -75,7 +75,7 @@ echo "== skill frontmatter contract =="
 if python3 - <<'PY'; then ok "all skills valid"; else bad "skill frontmatter contract failed"; fi
 import glob, os, re, sys
 bad = 0
-skills = sorted(glob.glob("plugins/ascension/skills/*/SKILL.md"))
+skills = sorted(glob.glob("plugins/tempest/skills/*/SKILL.md"))
 if not skills:
     print("    (no skills yet — gate passes on an empty pack)")
 for p in skills:
@@ -112,7 +112,7 @@ echo "== command portability =="
 if python3 - <<'PY'; then ok "all commands portable"; else bad "command portability failed"; fi
 import glob, re, sys
 bad = 0
-cmds = sorted(glob.glob("plugins/ascension/commands/*.md"))
+cmds = sorted(glob.glob("plugins/tempest/commands/*.md"))
 if not cmds:
     print("    (no commands yet — gate passes)")
 for p in cmds:

@@ -1,4 +1,4 @@
-# ascension
+# tempest
 
 A **software factory** for AI coding agents — opinionated build workflows shipped as portable
 [Agent Skills](https://agentskills.io) that run **identically on [Claude Code](https://claude.com/claude-code)
@@ -16,7 +16,7 @@ One source tree, two harnesses, no per-tool forks.
 Both Claude Code and pi implement the same Agent Skills `SKILL.md` standard (`name` + `description`
 frontmatter, progressive disclosure). pi reads `~/.agents/skills/` and `~/.claude/skills/` natively
 and exposes every skill as `/skill:<name>`; slash commands map to pi prompt templates through a
-shared argument subset. So a single `plugins/ascension/skills/` tree installs to both with only thin
+shared argument subset. So a single `plugins/tempest/skills/` tree installs to both with only thin
 manifest/symlink differences. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Install
@@ -24,8 +24,8 @@ manifest/symlink differences. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 ### Quick (both harnesses, symlink-based)
 
 ```bash
-git clone https://github.com/mtthsnc/ascension.git
-cd ascension
+git clone https://github.com/mtthsnc/tempest.git
+cd tempest
 ./install.sh            # or --no-claude / --no-pi to install one
 ```
 
@@ -36,14 +36,14 @@ into `~/.claude/commands/`, and registers the commands directory as a pi prompt-
 ### Claude Code via the plugin marketplace
 
 ```text
-/plugin marketplace add mtthsnc/ascension
-/plugin install ascension@ascension
+/plugin marketplace add mtthsnc/tempest
+/plugin install tempest@tempest
 ```
 
 ### pi as a package
 
 ```bash
-pi install git:github.com/mtthsnc/ascension
+pi install git:github.com/mtthsnc/tempest
 ```
 
 Restart your agent sessions after installing so the skills and commands load.

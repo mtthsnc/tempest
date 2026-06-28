@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ascension doctor — checks the optional browser-QA dependencies (agent-browser).
+# tempest doctor — checks the optional browser-QA dependencies (agent-browser).
 # Advisory and read-only: it diagnoses, it never installs or mutates settings.
 # Exit 1 only if the core dependency (the agent-browser CLI) is missing, so it
 # can gate a QA run; install.sh calls it non-fatally.
@@ -12,7 +12,7 @@ info() { printf '  \033[36m·\033[0m %s\n' "$*"; }
 PI_SETTINGS="${PI_HOME:-$HOME/.pi/agent}/settings.json"
 missing_core=0
 
-echo "ascension doctor — browser QA dependencies"
+echo "tempest doctor — browser QA dependencies"
 
 echo "== agent-browser CLI (required for qa / bench) =="
 if command -v agent-browser >/dev/null 2>&1; then

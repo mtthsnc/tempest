@@ -1,4 +1,4 @@
-# Contributing to ascension
+# Contributing to tempest
 
 Thanks for helping build the factory. The skills are the product; everything else is thin wiring.
 
@@ -12,7 +12,7 @@ pre-commit install && pre-commit install --hook-type pre-push
 
 ## Adding or editing a skill
 
-1. Create `plugins/ascension/skills/<name>/SKILL.md` with frontmatter:
+1. Create `plugins/tempest/skills/<name>/SKILL.md` with frontmatter:
    - `name` — the directory name, lowercase letters/numbers/hyphens, ≤ 64 chars.
    - `description` — starts with **"Use when…"**, describes *when to invoke* (not the steps), ≤ 1024.
 2. Structure the body: **Overview → Procedure → Common mistakes → Guardrails**.

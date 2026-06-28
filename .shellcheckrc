@@ -1,4 +1,4 @@
-# ascension shellcheck config.
+# tempest shellcheck config.
 # SC2015 ("A && B || C is not if-then-else") fires on our `cond && ok || bad`
 # test-assertion idiom. It is safe here because the ok/bad helpers always
 # return 0, so C never runs when A succeeds. Disable this advisory note repo-wide.

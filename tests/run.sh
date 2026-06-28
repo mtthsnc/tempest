@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# ascension test suite. Installs into throwaway harness homes and asserts the wiring.
+# tempest test suite. Installs into throwaway harness homes and asserts the wiring.
 # No network, no agent CLIs needed. Exit nonzero on any failed assertion.
 set -uo pipefail
 REPO="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
-SKILLS_SRC="$REPO/plugins/ascension/skills"
-CMDS_SRC="$REPO/plugins/ascension/commands"
+SKILLS_SRC="$REPO/plugins/tempest/skills"
+CMDS_SRC="$REPO/plugins/tempest/commands"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 

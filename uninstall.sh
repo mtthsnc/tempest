@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ascension — uninstaller. Removes the wiring this repo created. Only removes symlinks
+# tempest — uninstaller. Removes the wiring this repo created. Only removes symlinks
 # that actually point back into this repo, so it is safe alongside other tools.
 #
 # Usage:
@@ -7,8 +7,8 @@
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
-SKILLS_SRC="$REPO/plugins/ascension/skills"
-CMDS_SRC="$REPO/plugins/ascension/commands"
+SKILLS_SRC="$REPO/plugins/tempest/skills"
+CMDS_SRC="$REPO/plugins/tempest/commands"
 
 AGENTS_HOME="${AGENTS_HOME:-$HOME/.agents}"
 CLAUDE_HOME="${CLAUDE_HOME:-$HOME/.claude}"
@@ -64,4 +64,4 @@ if cmds in prompts:
 PY
 fi
 
-echo "ascension: uninstalled."
+echo "tempest: uninstalled."

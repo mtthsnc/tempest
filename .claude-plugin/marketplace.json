@@ -1,21 +1,21 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "ascension",
-  "description": "ascension — a cross-harness software factory: opinionated build workflows as portable Agent Skills for Claude Code and pi.",
+  "name": "tempest",
+  "description": "tempest — a cross-harness software factory: opinionated build workflows as portable Agent Skills for Claude Code and pi.",
   "owner": {
     "name": "mtthsnc"
   },
   "plugins": [
     {
-      "name": "ascension",
+      "name": "tempest",
       "description": "A software factory for AI coding agents: opinionated plan -> build -> review -> test -> ship -> reflect workflows, shipped as portable Agent Skills that run identically on Claude Code and pi.",
       "author": {
         "name": "mtthsnc"
       },
       "category": "workflow",
-      "source": "./plugins/ascension",
+      "source": "./plugins/tempest",
       "version": "0.1.0",
-      "homepage": "https://github.com/mtthsnc/ascension"
+      "homepage": "https://github.com/mtthsnc/tempest"
     }
   ]
 }

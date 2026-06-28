@@ -1,6 +1,6 @@
 # Architecture
 
-ascension is one source tree that installs to two agent harnesses (Claude Code and pi) with no
+tempest is one source tree that installs to two agent harnesses (Claude Code and pi) with no
 duplicated content. This document explains how that works and why it holds.
 
 ## The core bet: skills are portable
@@ -9,7 +9,7 @@ Claude Code and pi both implement the [Agent Skills standard](https://agentskill
 directory with a `SKILL.md` whose frontmatter carries `name` and `description`, with progressive
 disclosure (only the description is always in context; the body loads on demand when the task
 matches). The frontmatter contract is the same on both. So **the skill is authored once** under
-`plugins/ascension/skills/<name>/SKILL.md` and consumed natively by both.
+`plugins/tempest/skills/<name>/SKILL.md` and consumed natively by both.
 
 ## Mapping the three primitives
 
@@ -29,10 +29,10 @@ restricts command files to the portable subset and flags harness-specific syntax
 `CLAUDE_HOME`, `PI_HOME` env vars, which is what the test harness uses):
 
 ```
-plugins/ascension/skills/<name>/  ──symlink──▶  ~/.agents/skills/<name>      (pi reads natively)
+plugins/tempest/skills/<name>/  ──symlink──▶  ~/.agents/skills/<name>      (pi reads natively)
                                   ──symlink──▶  ~/.claude/skills/<name>      (Claude)
-plugins/ascension/commands/<v>.md ──symlink──▶  ~/.claude/commands/<v>.md    (Claude)
-plugins/ascension/commands/       ──register─▶  ~/.pi/agent/settings.json    (pi "prompts" path)
+plugins/tempest/commands/<v>.md ──symlink──▶  ~/.claude/commands/<v>.md    (Claude)
+plugins/tempest/commands/       ──register─▶  ~/.pi/agent/settings.json    (pi "prompts" path)
 ```
 
 pi picks up skills through the neutral `~/.agents/skills/` location, so we don't register skills in
@@ -45,10 +45,10 @@ prompt path, so it is safe alongside other tools.
 
 The same repo is both a Claude marketplace and a pi package:
 
-- **Claude**: `.claude-plugin/marketplace.json` lists one plugin sourced at `./plugins/ascension`,
+- **Claude**: `.claude-plugin/marketplace.json` lists one plugin sourced at `./plugins/tempest`,
   whose `.claude-plugin/plugin.json` points `skills`/`commands` at its subdirectories.
 - **pi**: top-level `package.json` carries a `pi` key (`pi.skills`, `pi.prompts`) pointing at the
-  same `plugins/ascension/{skills,commands}` directories, and the `pi-package` keyword for the
+  same `plugins/tempest/{skills,commands}` directories, and the `pi-package` keyword for the
   gallery. `pi install git:<repo>` consumes it.
 
 No file is duplicated between the two distribution shapes; they reference the same source dirs.
@@ -93,10 +93,10 @@ v1, which targets pi + Claude Code only.
 
 | Path | Role |
 |---|---|
-| `plugins/ascension/skills/<name>/SKILL.md` | the workflows (authored once) |
-| `plugins/ascension/commands/<verb>.md` | thin slash entry points (also pi prompt templates) |
+| `plugins/tempest/skills/<name>/SKILL.md` | the workflows (authored once) |
+| `plugins/tempest/commands/<verb>.md` | thin slash entry points (also pi prompt templates) |
 | `.claude-plugin/marketplace.json` | Claude marketplace index |
-| `plugins/ascension/.claude-plugin/plugin.json` | Claude plugin manifest |
+| `plugins/tempest/.claude-plugin/plugin.json` | Claude plugin manifest |
 | `package.json` | pi package manifest (`pi.skills` / `pi.prompts`) |
 | `AGENTS.md` / `CLAUDE.md` → `AGENTS.md` | instructions for working on the repo |
 | `install.sh` / `uninstall.sh` | idempotent cross-harness wiring |
