@@ -50,17 +50,20 @@ Restart your agent sessions after installing so the skills and commands load.
 
 ## Use
 
+The sprint loop — **office-hours → plan → build → review → ship** (with `reflect` handled by the
+separate [reflect](https://github.com/mtthsnc/reflect) project):
+
 | Workflow | Skill | Command | Status |
 |---|---|---|---|
+| Reframe a raw idea with forcing questions | `office-hours` | `/office-hours <idea>` | ✅ implemented |
 | Reviewed implementation plan | `plan` | `/plan <task>` | ✅ implemented |
-| Reframe an idea before building | `office-hours` | `/office-hours` | ⏳ planned |
-| Execute a plan increment | `build` | `/build` | ⏳ planned |
-| Staff-level diff review | `review` | `/review` | ⏳ planned |
-| Real-run verification | `test` | `/test` | ⏳ planned |
-| PR + release hygiene | `ship` | `/ship` | ⏳ planned |
+| Execute an approved plan increment | `build` | `/build <increment>` | ✅ implemented |
+| Staff-level diff review (optional auto-fix) | `review` | `/review <diff/PR>` | ✅ implemented |
+| Land a reviewed change (PR, CI, deploy) | `ship` | `/ship <what>` | ✅ implemented |
 
-In Claude Code, type `/plan <task>` or let the agent auto-invoke the `plan` skill. In pi, type
-`/plan <task>` or `/skill:plan <task>`.
+Each ships as a deliberately generic **starter** skill — a faithful gstack-style spine you customize
+with your own standards. In Claude Code, type `/plan <task>` or let the agent auto-invoke the skill.
+In pi, type `/plan <task>` or `/skill:plan <task>`.
 
 ## Develop
 

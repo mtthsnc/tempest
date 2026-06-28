@@ -12,9 +12,10 @@ All notable changes to ascension are documented here. Format loosely follows
 - `install.sh` / `uninstall.sh`: idempotent wiring into `~/.agents/skills`, `~/.claude`, and pi's
   `settings.json` prompt paths.
 - Conformance gate (`scripts/validate.sh`) and sandbox test suite (`tests/run.sh`); CI runs both.
-- `plan` skill + `/plan` command — the first workflow (reviewed implementation plan), implemented
-  end-to-end and verified to wire onto both harnesses.
+- The sprint-loop spine as starter skills + commands, all passing the conformance gate:
+  `office-hours` (reframe an idea), `plan` (reviewed plan), `build` (execute an increment),
+  `review` (staff-level diff audit), `ship` (land a reviewed change).
 
 ### Planned
-- `office-hours`, `build`, `review`, `test`, `ship` workflows.
+- `reflect` handoff to the separate reflect project; `autoplan` chaining; `cso`/`investigate` gates.
 - OpenAI Codex and opencode install adapters.
