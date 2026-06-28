@@ -1,0 +1,13 @@
+# ascension ships the skill pack only. Nothing personal lives in this repo.
+
+# Node / pi package artifacts
+node_modules/
+package-lock.json
+*.tgz
+
+# OS / editor noise
+.DS_Store
+*.swp
+*~
+__pycache__/
+*.pyc

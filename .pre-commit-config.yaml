@@ -1,0 +1,20 @@
+# ascension pre-commit gates. Install once: `pip install pre-commit && pre-commit install`
+# (and `pre-commit install --hook-type pre-push` for the test stage).
+# These run the same scripts CI runs, so green locally == green in CI.
+repos:
+  - repo: local
+    hooks:
+      - id: conformance
+        name: ascension conformance gate
+        entry: scripts/validate.sh
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      - id: tests
+        name: ascension tests
+        entry: tests/run.sh
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]

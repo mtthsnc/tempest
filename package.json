@@ -1,0 +1,17 @@
+{
+  "name": "ascension",
+  "version": "0.1.0",
+  "description": "A software factory for AI coding agents: opinionated plan -> build -> review -> test -> ship -> reflect workflows, shipped as portable Agent Skills that run identically on Claude Code and pi.",
+  "license": "MIT",
+  "homepage": "https://github.com/mtthsnc/ascension",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtthsnc/ascension.git"
+  },
+  "keywords": ["pi-package", "agent-skills", "workflow", "software-factory"],
+  "private": false,
+  "pi": {
+    "skills": ["plugins/ascension/skills"],
+    "prompts": ["plugins/ascension/commands"]
+  }
+}
