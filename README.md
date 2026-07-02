@@ -4,11 +4,13 @@ A **software factory** for AI coding agents — opinionated build workflows ship
 [Agent Skills](https://agentskills.io) that run **identically on [Claude Code](https://claude.com/claude-code)
 and [pi](https://pi.dev)**.
 
-A sprint loop — **office-hours → plan → build → review → ship**, plus browser-driven QA — encoded as
-skills your agent loads on demand. One source tree, two harnesses, no per-tool forks.
+A sprint loop — **office-hours → plan → build → review → ship** — plus a **fast lane** (`burst`) for
+changes too small to need it, and browser-driven QA underneath both. Encoded as skills your agent
+loads on demand. One source tree, two harnesses, no per-tool forks.
 
-> Status: **v0.1.** The full sprint-loop spine, the QA suite (`qa`/`verify`/`bench`), and the `bcp`
-> brand bridge are implemented; the conformance gate and tests are green.
+> Status: **v0.1.** The full sprint-loop spine, the `burst` fast lane, the QA suite
+> (`qa`/`verify`/`bench`), and the `bcp` brand bridge are implemented; the conformance gate and tests
+> are green.
 
 ## Why it's portable
 
@@ -63,6 +65,21 @@ separate [reflect](https://github.com/mtthsnc/reflect) project):
 Each ships as a deliberately generic **starter** skill — a spine you customize with your own
 standards. In Claude Code, type `/plan <task>` or let the agent auto-invoke the skill.
 In pi, type `/plan <task>` or `/skill:plan <task>`.
+
+### Fast lane
+
+Not every change earns the full loop. A one-liner fix, a small well-scoped feature — anything where
+writing a plan would be pure overhead — skips straight to shipping:
+
+| Workflow | Skill | Command | Status |
+|---|---|---|---|
+| Ship a small, well-understood change end-to-end | `burst` | `/burst <change>` | ✅ implemented |
+
+`burst` runs issue → branch → implement → validate → squash → PR in one uninterrupted pass after a
+single up-front plan confirmation — no office-hours, no written plan, no separate review step. It
+hands UI validation off to `qa` rather than driving the browser itself, so it stays harness-adaptive
+for free. If the scope turns out bigger or riskier than it looked, it routes to `plan` instead of
+plowing ahead.
 
 ### Quality & QA (browser-driven)
 
